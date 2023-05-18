@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Счета{% endblock %}
+
+{% block content %}
+<div class="center">
+  <h1>Счета</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Клиент</label>
+    <div class="inputbox">
+       {{ form.client }}
+    </div>
+    <label>Сумма</label>
+    <div class="inputbox">
+      {{ form.summa }}
+    </div>
+    <span>{{ error }}</span>
+    <div class="inputbox">
+      <input type="submit" value="Отправить">
+    </div>
+  </form>
+</div>
+{% endblock %}

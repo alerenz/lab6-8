@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Должности{% endblock %}
+
+{% block content %}
+<div class="center">
+  <h1>Должности</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Должность</label>
+    <div class="inputbox">
+       {{ form.name }}
+    </div>
+    <label>Сотрудник</label>
+    <div class="inputbox">
+      {{ form.sotrudnik }}
+    </div>
+    <span>{{ error }}</span>
+    <div class="inputbox">
+      <input type="submit" value="Отправить">
+    </div>
+  </form>
+</div>
+{% endblock %}

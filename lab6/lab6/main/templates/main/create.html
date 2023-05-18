@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Добавление новых записей{% endblock %}
+
+{% block content %}
+ <div class="create">
+  <ul id="spisok">
+   <li><a href="{% url 'poseschenie' %}">Заполнить посещения</a></li>
+   <li><a href="{% url 'clients' %}">Заполнить клиентов</a></li>
+   <li><a href="{% url 'sotrudniki' %}">Заполнить сотрудников</a></li>
+   <li><a href="{% url 'dolzhnosti' %}">Заполнить должности</a></li>
+   <li><a href="{% url 'credit' %}">Заполнить кредиты</a></li>
+   <li><a href="{% url 'count' %}">Заполнить счета</a></li>
+  </ul>
+ </div>
+{% endblock %}

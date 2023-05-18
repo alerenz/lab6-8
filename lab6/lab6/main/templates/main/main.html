@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<h1 class="main">Добро пожаловать на сайт банка!</h1>
+<div class="first">
+ <p>В банке можно оформить:</p>
+ <ul>
+  <li>Кредит</li>
+  <li>Ипотеку</li>
+  <li>Карту</li>
+  <li>Вклад</li>
+  <li>Счет</li>
+ </ul>
+</div>
+<div class="second">
+ <h3>Станьте клиентом банка!</h3>
+ <a href="{% url 'registr' %}">Зарегистрироваться</a>
+</div>
+{% endblock %}

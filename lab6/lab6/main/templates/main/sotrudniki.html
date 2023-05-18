@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Сотрудники{% endblock %}
+
+{% block content %}
+<div class="center">
+  <h1>Сотрудники</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Фамилия</label>
+    <div class="inputbox">
+       {{ form.surname }}
+    </div>
+    <label>Имя</label>
+    <div class="inputbox">
+      {{ form.name }}
+    </div>
+       <label>Дата рождения(01.01.1900)</label>
+      <div class="inputbox">
+      {{ form.data_birth }}
+    </div>
+      <label>Стаж</label>
+      <div class="inputbox">
+      {{ form.stazh }}
+    </div>
+    <span>{{ error }}</span>
+    <div class="inputbox">
+      <input type="submit" value="Отправить">
+    </div>
+  </form>
+</div>
+{% endblock %}

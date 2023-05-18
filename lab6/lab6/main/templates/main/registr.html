@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="center">
+    <h1>Регистрация</h1>
+    <form class="registr" method="post">
+        {% csrf_token %}
+        {% for el in form %}
+            <p>{{ el.label }} {{ el }} </p>
+            <div class="form-error">{{ el.errors }}</div>
+        {% endfor %}
+        <button type="submit"> Регистрация </button>
+    </form>
+</div>
+{% endblock %}

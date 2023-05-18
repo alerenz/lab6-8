@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="content">
+<header>
+ <ul id="navbar">
+  <li><a href="{% url 'main' %}">Главная страница</a></li>
+   {% if request.user.is_authenticated %}
+     {% if user.username == 'admin2610' or user.username == 'renz' %}
+        <li><a href="{% url 'home' %}">Вывод из базы данных</a></li>
+        <li><a href="{% url 'create' %}">Добавление новых записей</a></li>
+     {% endif %}
+     {% if role == 'users' %}
+        <li><a href="{% url 'home' %}">Вывод из базы данных</a></li>
+     {% endif %}
+     <li><a href="{% url 'logout' %}">Выйти</a></li></li>
+   {% else %}
+     <li><a href="{% url 'registr' %}">Регистрация</a></li>
+     <li><a href="{% url 'auth' %}">Вход</a></li>
+   {% endif %}
+ </ul>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+</div>
+</body>
+</html>

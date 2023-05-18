@@ -1,0 +1,228 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Вывод из базы данных{% endblock %}
+
+
+{% block content %}
+ <h1 class="main">Вывод из базы данных</h1>
+ <h3>История посещений:</h3>
+ <table>
+  <tr>
+   <th>№</th>
+   <th>Фамилия</th>
+   <th>Имя</th>
+   <th>Дата и время</th>
+   <th>Обращение</th>
+   <th>Сотрудник</th>
+  </tr>
+   {% for el in bank %}
+   <tr>
+    <td>{{el.id}}</td>
+    <td>{{el.surname}}</td>
+    <td>{{el.name}}</td>
+    <td>{{el.date_and_time}}</td>
+    <td>{{el.service}}</td>
+    <td>{{el.sotrudnik.surname}}</td>
+    <td>
+     <a href="{% url 'delete_bank' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_bank' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+ <h3>Клиенты:</h3>
+ <table>
+  <tr>
+   <th>№</th>
+   <th>Фамилия</th>
+   <th>Имя</th>
+   <th>Дата рождения</th>
+   <th>Почта</th>
+  </tr>
+   {% for el in client %}
+   <tr>
+    <td>{{el.id}}</td>
+    <td>{{el.surname}}</td>
+    <td>{{el.name}}</td>
+    <td>{{el.data_birth}}</td>
+    <td>{{el.email}}</td>
+    <td>
+     <a href="{% url 'delete_client' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_client' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+ <h3>Сотрудники:</h3>
+ <table>
+  <tr>
+   <th>№</th>
+   <th>Фамилия</th>
+   <th>Имя</th>
+   <th>Дата рождения</th>
+   <th>Стаж</th>
+  </tr>
+   {% for el in sotr %}
+   <tr>
+    <td>{{el.id}}</td>
+    <td>{{el.surname}}</td>
+    <td>{{el.name}}</td>
+    <td>{{el.data_birth}}</td>
+    <td>{{el.stazh}}</td>
+    <td>
+     <a href="{% url 'delete_sotr' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_sotr' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+ <h3>Кредиты:</h3>
+ <table>
+  <tr>
+   <th>№</th>
+   <th>Клиент</th>
+   <th>Сумма</th>
+   <th>%</th>
+   <th>На какой срок</th>
+  </tr>
+   {% for el in credit %}
+   <tr>
+    <td>{{el.id}}</td>
+    <td>{{el.client.surname}}</td>
+    <td>{{el.summa}}</td>
+    <td>{{el.procent}}</td>
+    <td>{{el.years}}</td>
+    <td>
+     <a href="{% url 'delete_credit' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_credit' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+ <h3>Счета:</h3>
+ <table>
+  <tr>
+   <th>№</th>
+   <th>Клиент</th>
+   <th>Сумма</th>
+  </tr>
+   {% for el in count %}
+   <tr>
+    <td>{{el.id}}</td>
+    <td>{{el.client.surname}}</td>
+    <td>{{el.summa}}</td>
+    <td>
+     <a href="{% url 'delete_count' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_count' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+ <h3>Должности:</h3>
+ <table>
+  <tr>
+   <th>№</th>
+   <th>Должность</th>
+   <th>Сотрудник</th>
+  </tr>
+   {% for el in dolzh %}
+   <tr>
+    <td>{{el.id}}</td>
+    <td>{{el.name}}</td>
+    <td>
+     {% for sur in el.sotrudnik.all %}
+      {{sur.surname}}
+     {% endfor %}
+    </td>
+    <td>
+     <a href="{% url 'delete_dolzh' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Удалить запись
+      </button>
+      </li>
+     </a>
+   </td>
+     <td>
+     <a href="{% url 'update_dolzh' el.id %}">
+      <li>
+      <button class="btn">
+       <i ></i>Редактировать
+      </button>
+      </li>
+     </a>
+   </td>
+   </tr>
+   {% endfor %}
+ </table>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Кредиты{% endblock %}
+
+{% block content %}
+<div class="center">
+  <h1>Кредиты</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Клиент</label>
+    <div class="inputbox">
+       {{ form.client }}
+    </div>
+    <label>Сумма</label>
+    <div class="inputbox">
+      {{ form.summa }}
+    </div>
+    <label>%</label>
+      <div class="inputbox">
+      {{ form.procent }}
+    </div>
+    <label>Срок</label>
+      <div class="inputbox">
+      {{ form.years }}
+    </div>
+    <span>{{ error }}</span>
+    <div class="inputbox">
+      <input type="submit" value="Отправить">
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'main/layout.html' %}
+
+ {% block title %}Посещения{% endblock %}
+
+{% block content %}
+<div class="center">
+  <h1>Посещения</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Фамилия</label>
+    <div class="inputbox">
+       {{ form.surname }}
+    </div>
+    <label>Имя</label>
+    <div class="inputbox">
+      {{ form.name }}
+    </div>
+    <label>Дата и время</label>
+      <div class="inputbox">
+      {{ form.date_and_time }}
+    </div>
+    <label>Обращение</label>
+      <div class="inputbox">
+      {{ form.service }}
+    </div>
+    <label>Сотрудник</label>
+    <div class="inputbox">
+      {{ form.sotrudnik }}
+    </div>
+    <span>{{ error }}</span>
+    <div class="inputbox">
+      <input type="submit" value="Отправить">
+    </div>
+  </form>
+</div>
+{% endblock %}
